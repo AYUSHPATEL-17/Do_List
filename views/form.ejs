@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>To Do list</title>
+</head>
+
+<body>
+
+    <div class="col-8 mt-4 p-2 mx-auto">
+        <div class="bg-white p-3 col-10 mx-auto shadow">
+            <h1 class="text-center">To Do List</h1>
+            <form action="/insertData" method="post">
+                <input type="text" name="taskId" id="" class="form-control my-2" placeholder="Enter Id" required>
+                <input type="text" name="name" id="" class="form-control my-2" placeholder="Enter Task Here.." required>
+                <input type="submit" value="Add Task" class="btn btn-primary my-2">
+
+            </form>
+            <table class="table table-dark table-striped mt-2">
+                
+                <tr>
+                    <th>Task Id</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+                <% user.map((val)=>{ %>
+                    <tr>
+                        <td>
+                            <%=val.taskId %>
+                        </td>
+                        <td>
+                            <%=val.name %>
+                        </td>
+                        <td >
+                            <button class="btn btn-primary "> <a href="/deleteData?taskId=<%=val.taskId %>" class="text-white text-decoration-none">Delete</a></button>
+                            <button class="btn btn-primary "> <a href="/editData?taskId=<%=val.taskId %>" class="text-white text-decoration-none">Edit</a></button>
+                        </td>
+                    </tr>
+
+
+                    <% }) %>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
